@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 15:35:27 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/08 18:02:14 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2024/06/08 21:24:36 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/08 21:49:29 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- * if index is lesser than total length of string, allow the ptr to point to the target byte size to fill 0.
- * */
-
-void	ft_bzero(void *ptr, size_t number)
+char	*ft_strchr(const char *str, int c)
 {
-	unsigned char	*target_byte;
-	size_t	index;
-
-	target_byte = ptr;
-	index = 0;
-	while (index < number)
+	while (*str != '\0')
 	{
-		target_byte[index] = '\0';
-		index++;
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
+	if (*str == c)
+		return ((char *)str);
+	return (NULL);
 }
-

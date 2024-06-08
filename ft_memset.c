@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:55:28 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/05 17:17:20 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:53:56 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memset(void *ptr, int value, size_t number)
 	index = 0;
 	while (index < number)
 	{
-		((char *)ptr)[index] = val;
+		((char *)ptr)[index] = char_val;
 		index++;
 	}
 	return (ptr);
