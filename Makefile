@@ -1,6 +1,8 @@
-SRCS = ft_isalpha.c  ft_isdigit.c ft_isalnum.c \
+Library	= libft
 
-Library = libft
+SRCS = ft_isalpha	\
+	   ft_isdigit	\
+	   ft_isalnum	\
 
 Compiler	= gcc
 
@@ -8,9 +10,9 @@ CFlags	= -Wall -Wextra -Werror
 
 OUT	= $(Library).a
 
-CFILES	= $(SRCS: % = % .c)
+CFILES	= $(SRCS:%=%.c)
 
-OFILES	= $(SRCS: % = % .o)
+OFILES	= $(SRCS:%=%.o)
 
 NAME	= $(OUT)
 
@@ -21,11 +23,11 @@ $(NAME):
 all:	$(NAME)
 
 clean:
-	rm -rf $(NAME)
-	rm -rf $(OFILES)
+	rm -f $(NAME)
+	rm -f $(OFILES)
 
 fclean:
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
 re:	fclean all
 
