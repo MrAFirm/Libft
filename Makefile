@@ -14,6 +14,10 @@ SRCS = ft_isalpha	\
 	   ft_bzero		\
 	   ft_toupper	\
 	   ft_tolower	\
+	   ft_strrchr	\
+	   ft_strncmp	\
+	   ft_strlcat	\
+	   ft_memchr	\
 
 Compiler	= gcc
 
@@ -37,8 +41,8 @@ clean:
 	rm -f $(NAME)
 	rm -f $(OFILES)
 
-fclean:
-	rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME) $(OFILES)
 
 re:	fclean all
 
