@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 16:32:05 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/13 18:52:00 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2024/06/11 16:24:36 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/12 14:25:22 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t length)
+int ft_memcmp(const void *s1, const void *s2, size_t length)
 {
-	char	*dst;
-	char	*s;
+    const unsigned char *str1;
+    const unsigned char *str2;
+    size_t index;
 
-	dst = (char *)dest;
-	s = (char *)src;
-	if (!dest && !src)
-		return (0);
-	if (dest <= src)
-	{
-		while (length--)
-			*dst++ = *s++;
-	}
-	else if (dest > src)
-	{
-		dst += length - 1;
-		s += length - 1;
-		while (length--)
-			*dst-- = *s--;
-	}
-	return (dest);
+    str1 = (const unsigned char *)s1;
+    str2 = (const unsigned char *)s2;
+    index = 0;
+    while (index < length)
+    {
+        if (str1[index] != str2[index])
+            return (str1[index] - str2[index]);
+        index++; 
+    }
+    return (str1[index] - str2[index]);
 }

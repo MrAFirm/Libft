@@ -18,6 +18,12 @@ SRCS = ft_isalpha	\
 	   ft_strncmp	\
 	   ft_strlcat	\
 	   ft_memchr	\
+	   ft_memcmp	\
+	   ft_strnstr	\
+	   ft_atoi		\
+	   ft_calloc	\
+	   ft_memmove	\
+	   ft_strdup	\
 
 Compiler	= gcc
 
