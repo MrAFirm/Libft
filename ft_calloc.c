@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:37:30 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/13 15:39:59 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:25:39 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
+	size_t	target_bytes;
 
-	ptr = malloc(nmemb * size);
+	target_bytes = nmemb * size;
+	if (!size && nmemb > (UINT_MAX / size))
+		return (NULL);
+	ptr = malloc(target_bytes);
 	if (!ptr)
 		return (NULL);
-	ft_memset(ptr, 0, nmemb * size);
+	ft_memset(ptr, 0, target_bytes);
 	return (ptr);
 }

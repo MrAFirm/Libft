@@ -24,8 +24,9 @@ SRCS = ft_isalpha	\
 	   ft_calloc	\
 	   ft_memmove	\
 	   ft_strdup	\
+	   ft_substr	\
 
-Compiler	= gcc
+Compiler	= cc
 
 CFlags	= -Wall -Wextra -Werror
 
