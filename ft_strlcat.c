@@ -3,48 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:36:53 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:37:17 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/07 13:52:41 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/18 16:43:49 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t	dst_len;
+    size_t	i;
+    size_t	dst_len;
+	size_t	remaining;
 	size_t	src_len;
-	size_t	i;
+	size_t	total_len;
 
 	src_len = ft_strlen(src);
-	if (size == 0)
+	if (!size)
 		return (src_len);
-	dst_len = ft_strlen(dst);
-	if (size <= dst_len)
-		return (size + src_len);
-	i = 0;
-	while (src[i] && (dst_len + i < size - 1))
-	{
-		dst[dst_len + i] = src[i];
-		i++;
-	}
-	dst[dst_len + i] = '\0';
-	return (dst_len + src_len);
-}
+	dst_len = ft_strlen(dest);	
+    remaining = size - dst_len - 1;
+    total_len = dst_len + src_len;
 
-/*
-#include <string.h>
-#include <stdio.h>
+    if (size <= dst_len)
+        return src_len + size;
 
-int	main(void)
-{
-	char	c[10];
-	char	c2[10];
-	size_t	len = ft_strlcat(c, "132", 1);
-	size_t	len2 = strlcat(c2, "132", 1);
-	printf("len: %lu\nlen2: %lu\n", len, len2);
-	return (0);
+    i = 0;
+    while (src[i] != '\0' && i < remaining)
+    {
+        dest[dst_len + i] = src[i];
+        i++;
+    }
+    dest[dst_len + i] = '\0';
+
+    return total_len;
 }
-*/

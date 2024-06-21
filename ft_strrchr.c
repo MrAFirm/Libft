@@ -3,31 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:18:49 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:18:51 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/08 21:53:17 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/20 14:06:06 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
-{
-	char	ref;
-	char	*temp;
+/*
+This function returns a pointer to the last occurrence of character in str. If the value is not found, the function returns a null pointer, as the last_match variable will always update as it encounters the character in the string until thestring reaches NULL, then to check the NULL terminator, the if statement is there to check. And if the character we want isn't in the string, it'll just return NULL as last_match is initialised to NULL.
+*/
 
-	ref = (char)c;
-	temp = (char *)s;
-	while (*temp)
-		temp++;
-	while (temp != s)
+char	*ft_strrchr(const char *str, int c)
+{
+	char *last_match;
+
+	last_match = NULL;
+	while (*str != '\0')
 	{
-		if (*temp == ref)
-			break ;
-		temp--;
+		if ((unsigned char)*str == (unsigned char)c)
+			last_match = ((char *)str);
+		str++;
 	}
-	if (temp == s && *temp != ref)
-		return (NULL);
-	return (temp);
+	if (*str == c)
+		last_match = ((char *)str);
+	return (last_match);
 }
+

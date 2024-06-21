@@ -3,38 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:24:25 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/19 18:57:04 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/14 14:14:57 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/20 14:39:32 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *src, size_t start, size_t len)
 {
-	char	*holder;
-	size_t	i;
-	size_t	strt;
+	size_t	substring_length;
+	size_t	finish;
+	char	*dest;
 
-	if (!s)
-		return (NULL);
-	strt = (size_t)start;
-	if (strt > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > (ft_strlen(s) - strt + 1))
-		holder = malloc(ft_strlen(s) - strt + 2);
-	else
-		holder = malloc(len + 1);
-	if (!holder)
-		return (NULL);
-	i = 0;
-	while (i < len && s[strt + i] != '\0')
-	{
-		holder[i] = s[strt + i];
-		i++;
-	}
-	holder[len] = '\0';
-	return (holder);
+	if (!src)
+		return (0);
+	substring_length = ft_strlen(src);
+	finish = 0;
+	if (start < substring_length)
+		finish = substring_length - start;
+	if (finish > len)
+		finish = len;
+	dest = malloc(sizeof(char) * (finish + 1));
+	if (!dest)
+		return (0);
+	ft_strlcpy (dest, src + start, finish + 1);
+	return (dest);
 }

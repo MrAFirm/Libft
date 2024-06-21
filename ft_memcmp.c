@@ -5,34 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:10:35 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/20 19:20:49 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2024/06/11 16:24:36 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/18 19:14:24 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int ft_memcmp(const void *s1, const void *s2, size_t size)
 {
-	unsigned char	*src1;
-	unsigned char	*src2;
+	const unsigned char *str1;
+	const unsigned char *str2;
+	size_t index;
 
-	src1 = (unsigned char *)s1;
-	src2 = (unsigned char *)s2;
-	while (n > 0)
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	index = 0;
+	while (index < size)
 	{
-		if (*src1 != *src2)
-			return ((int)*src1 - (int)*src2);
-		src1++;
-		src2++;
-		n--;
+		if (str1[index] != str2[index])
+			return (str1[index] - str2[index]);
+		index++; 
 	}
 	return (0);
 }
-
+/*
 #include <stdio.h>
-int main(void)
+#include <string.h>
+
+int main (void)
 {
-	int i = ft_memcmp((int *)12, (int *)1, sizeof(char));
-	printf("%i\n", i);
+		char *s1 = "\xff\xaa\xde\x12";
+		char *s2 = "\xff\xaa\xde\x12MACOSAAAAA";
+		size_t size = 4;
+		int i1 = memcmp(s1, s2, size);
+		int i2 = ft_memcmp(s1, s2, size);
+
+	printf("memcmp: %d\nft_memcmp: %d\n", i1, i2);
 }
+*/

@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:02:19 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/20 15:42:16 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/05 15:35:27 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/08 18:02:14 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+ * if index is lesser than total length of string, allow the ptr to point to the target byte size to fill 0.
+ * */
+
+void	ft_bzero(void *ptr, size_t number)
 {
-	ft_memset(s, 0, n);
+	unsigned char	*target_byte;
+	size_t	index;
+
+	target_byte = ptr;
+	index = 0;
+	while (index < number)
+	{
+		target_byte[index] = '\0';
+		index++;
+	}
 }
 
-/*
-#include <stdio.h>
-int main(void)
-{
-	int	int_arr[3] = {1,2,3};
-	ft_bzero(int_arr, 12);
-	for (int i = 0; i < 3; i++)
-		printf("%d\n", int_arr[i]);
-}
-*/

@@ -3,30 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:18:38 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:18:39 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/12 14:24:55 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/20 18:11:54 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+char    *ft_strnstr(const char *big, const char *little, size_t length)
 {
-	size_t	len;
-
-	len = ft_strlen(needle);
-	if (n == 0 && haystack == 0)
-		return (NULL);
-	if (*needle == '\0')
+    const char	*haystack;
+    const char	*needle;
+    size_t  	i;
+ 
+    haystack = (const char *)big;
+    needle = (const char *)little;
+    i = 0;
+	if (!needle[0])
 		return ((char *)haystack);
-	while (*haystack && len <= n)
-	{
-		if (ft_strncmp(haystack, needle, len) == 0)
-			return ((char *)haystack);
-		n--;
-		haystack++;
-	}
-	return (NULL);
+	if (!length)
+		return (0);
+	if (*needle == '\0')
+        return ((char *)haystack);
+    while (*haystack != '\0' && i <= length - ft_strlen(needle))
+    {
+       if (ft_strncmp(haystack, needle, ft_strlen(needle)) == 0)
+       {
+            return ((char *)haystack);
+       }
+       i++;
+       haystack++;
+    }
+    return (NULL);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	    char *s1 = "see FF your FF return FF now FF";
+        char *s2 = "FF";
+        size_t max = strlen(s1);
+        char *i1 = strnstr(s1, s2, max);
+        char *i2 = ft_strnstr(s1, s2, max);
+		
+		printf("expected: %s\nreality: %s\n", i1, i2);
+}
+*/

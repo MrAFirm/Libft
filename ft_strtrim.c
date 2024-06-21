@@ -3,44 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:19:04 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:19:04 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/20 18:16:12 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/20 18:28:05 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	in_set(char c, char const *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-			return (TRUE);
-		set++;
-	}
-	return (FALSE);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
+char	*strtrim(const char *s1, const char *set)
 {
 	size_t	start;
 	size_t	end;
-
-	if (!s1)
-		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
-	start = 0;
-	end = ft_strlen(s1) - 1;
-	while (in_set(s1[start], set) == TRUE)
-	{
-		if (start == end)
-			return (ft_strdup(""));
-		start++;
-	}
-	while (in_set(s1[end], set) == TRUE)
-		end--;
-	return (ft_substr(s1, start, (end - start + 1)));
 }

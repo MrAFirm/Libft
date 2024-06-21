@@ -3,40 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:15:55 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:36:29 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/19 15:43:11 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/20 15:33:50 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	total_size;
-	char	*final_str;
-	char	*holder;
+	size_t	i;
+	size_t	j;
+	char	*concatenate;
 
+	i = 0;
+	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	total_size = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	holder = malloc(total_size + 1);
-	if (!holder)
+	concatenate = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!concatenate)
 		return (NULL);
-	final_str = holder;
-	while (*s1)
+	while (s1[i])
 	{
-		*holder = *s1;
-		holder++;
-		s1++;
+		concatenate[i] = s1[i];
+		i++;	
 	}
-	while (*s2)
+	while (s2[j])
 	{
-		*holder = *s2;
-		holder++;
-		s2++;
+		concatenate[i] = s2[j];
+		i++;
+		j++;
 	}
-	*holder = '\0';
-	return (final_str);
+	concatenate[i] = '\0';
+	return (concatenate);
 }
+
+/*
+#include <stdio.h>
+
+int main (void)
+{
+	char *s1 = "my favorite animal is";
+    char *s2 = " ";
+    char *s3 = "the nyancat";
+    char *res = ft_strjoin(ft_strjoin(s1, s2), s3);
+
+	printf("answer: %s\n", res);
+}
+*/

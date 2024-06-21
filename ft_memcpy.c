@@ -3,30 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/08 21:47:49 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:31:34 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/06 14:55:32 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/10 16:34:32 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t length)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t	index;
 
-	i = 0;
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	if (!src && !dest)
-		return (NULL);
-	while (i < n)
+	index = 0;
+	if (dest == NULL && src == NULL)
+    	return NULL;
+
+	while (index < length)
 	{
-		*(d + i) = *(s + i);
-		i++;
+		((char *)dest)[index] = ((const char *)src)[index];
+		index++;
 	}
 	return (dest);
 }
+
+/*
+ #include <stdio.h>
+
+int main() {
+    char str1[] = "Hello";
+    char str2[10];  //Enough space to hold "Hello" (including null terminator)
+
+    printf("Original string: %s\n", str1);
+
+    // Copy "Hello" from str1 to str2 using ft_memcpy
+    ft_memcpy(str2, str1, sizeof(str1));
+
+    printf("String after ft_memcpy: %s\n", str2);
+
+    return 0;
+}
+*/
