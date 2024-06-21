@@ -5,41 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 14:55:28 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/08 17:53:56 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2024/06/18 19:11:28 by yachan            #+#    #+#             */
+/*   Updated: 2024/06/20 19:33:59 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * using unsigned char for typecasting from int to char using void *ptr and the total amount of byte size more than the byte size for change, and increment as the value changes. And finally return the initial ptr for char *. Since the ptr is void, it can be anything.
- * */
-
-void	*ft_memset(void *ptr, int value, size_t number)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	char_val;
-	size_t	index;
+	size_t			i;
+	unsigned char	*src;
 
-	char_val	= (unsigned char)value;
-	index = 0;
-	while (index < number)
+	i = 0;
+	src = (unsigned char *)s;
+	while (i < n)
 	{
-		((char *)ptr)[index] = char_val;
-		index++;
+		src[i] = (unsigned char)c;
+		i++;
 	}
-	return (ptr);
+	return (src);
 }
 
-/*
-*#include <stdio.h>
-*int main()
-*{
-*char str[10] = "Hello";
-*printf("Original string: %s\n", str);
-* Fill a portion of the string with 'X' (value 88)
-*ft_memset(str + 3, 88, 3);  
-* Modify starting index and bytes needed
-*printf("String after ft_memset: %s\n", str);
-*}
-*/
+#include <stdio.h>
+int main(void)
+{
+	int arr[3] = {1,2,3};
+	ft_memset(&arr, 0, 4);
+	for (int i = 0; i < 3; i++)
+		printf("%i\n", arr[i]);
+}

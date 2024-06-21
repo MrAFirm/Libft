@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:15:01 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:43:18 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/18 19:12:27 by yachan            #+#    #+#             */
+/*   Updated: 2024/06/20 16:25:46 by yachan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	ref;
-	char	*temp;
+	char	num;
+	long	lnum;
 
-	ref = (char)c;
-	temp = (char *)s;
-	while (*temp)
+	lnum = n;
+	if (lnum == 0)
+		write(fd, "0", 1);
+	else
 	{
-		if (*temp == ref)
-			return (temp);
-		temp++;
+		if (lnum < 0)
+		{
+			lnum *= -1;
+			write(fd, "-", 1);
+		}
+		if (lnum >= 10)
+			ft_putnbr_fd(lnum / 10, fd);
+		num = '0' + lnum % 10;
+		write(fd, &num, 1);
 	}
-	if (c == '\0')
-		return (temp);
-	return (NULL);
 }
+
+/*
+int	main(void)
+{
+	for (int i = 0; i < 3003; i++)
+	{
+		ft_putnbr_fd(i, 1);
+		write(1, "\n", 1);
+	}
+}
+*/

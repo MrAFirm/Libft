@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:15:18 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/18 19:15:18 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/18 19:08:40 by yachan            #+#    #+#             */
+/*   Updated: 2024/06/18 19:08:40 by yachan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int		i;
-	char	*holder;
+	t_list	*temp;
+	t_list	*current;
 
-	i = 0;
-	holder = malloc(ft_strlen(src) + 1);
-	if (!holder)
-		return (NULL);
-	while (src[i])
+	if (!lst || !f)
+		return ;
+	current = lst;
+	while (current)
 	{
-		holder[i] = src[i];
-		i++;
+		temp = current->next;
+		f(current->content);
+		current = temp;
 	}
-	holder[i] = '\0';
-	return (holder);
 }
