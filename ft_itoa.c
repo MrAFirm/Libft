@@ -6,13 +6,13 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:55:20 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/22 16:11:30 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/22 21:59:21 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long int	ft_len(int n)
+static long	ft_len(int n)
 {
 	int	len;
 

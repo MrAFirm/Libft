@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:29:08 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/22 15:29:33 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/22 22:05:29 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	count_strings(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	count = 1;
 	i = 0;
@@ -37,7 +37,7 @@ int	count_strings(char const *s, char c)
 
 int	ft_delimstrl(char const *s, char c)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (s[len] != c && s[len] != '\0')
@@ -47,7 +47,7 @@ int	ft_delimstrl(char const *s, char c)
 
 void	putstr(char *dest, char const *str, int len)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -62,8 +62,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	size_t	i;
-	int		j;
-	int		count;
+	size_t	j;
+	size_t	count;
 
 	i = 0;
 	j = 0;
