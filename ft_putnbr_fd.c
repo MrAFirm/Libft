@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 19:12:27 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/20 16:25:46 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/22 15:16:30 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/22 15:17:52 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	num;
-	long	lnum;
+	long	nb;
 
-	lnum = n;
-	if (lnum == 0)
-		write(fd, "0", 1);
+	nb = n;
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd((nb % 10) + '0', fd);
+	}
 	else
-	{
-		if (lnum < 0)
-		{
-			lnum *= -1;
-			write(fd, "-", 1);
-		}
-		if (lnum >= 10)
-			ft_putnbr_fd(lnum / 10, fd);
-		num = '0' + lnum % 10;
-		write(fd, &num, 1);
-	}
+		ft_putchar_fd(nb + '0', fd);
 }
-
-/*
-int	main(void)
-{
-	for (int i = 0; i < 3003; i++)
-	{
-		ft_putnbr_fd(i, 1);
-		write(1, "\n", 1);
-	}
-}
-*/

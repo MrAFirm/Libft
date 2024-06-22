@@ -1,57 +1,53 @@
-Library	= libft
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/06/22 16:55:49 by lkhye-ya          #+#    #+#              #
+#    Updated: 2024/06/22 17:00:42 by lkhye-ya         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS = ft_isalpha	\
-	   ft_isdigit	\
-	   ft_isalnum	\
-	   ft_isascii	\
-	   ft_isdigit	\
-	   ft_isprint	\
-	   ft_memcpy	\
-	   ft_memset	\
-	   ft_strchr	\
-	   ft_strlcpy	\
-	   ft_strlen	\
-	   ft_bzero		\
-	   ft_toupper	\
-	   ft_tolower	\
-	   ft_strrchr	\
-	   ft_strncmp	\
-	   ft_strlcat	\
-	   ft_memchr	\
-	   ft_memcmp	\
-	   ft_strnstr	\
-	   ft_atoi		\
-	   ft_calloc	\
-	   ft_memmove	\
-	   ft_strdup	\
-	   ft_substr	\
-	   ft_strjoin	\
+NAME := libft.a
 
-Compiler	= cc
+SRCS := ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
+ft_isprint.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strlcpy.c ft_strlen.c \
+ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
+ft_memchr.c ft_memcmp.c ft_atoi.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c \
+ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
+ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+OBJS := $(SRCS:.c=.o)
 
-CFlags	= -Wall -Wextra -Werror
+BONUS := ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS_OBJS := $(BONUS:.c=.o)
 
-OUT	= $(Library).a
+CFLAGS := -Wall -Wextra -Werror
+CC := cc
+AR := ar rcs
 
-CFILES	= $(SRCS:%=%.c)
+all: $(NAME)
 
-OFILES	= $(SRCS:%=%.o)
+$(NAME): $(OBJS)
+	$(AR) $@ $^
 
-NAME	= $(OUT)
-
-$(NAME):
-	$(Compiler) $(CFlags) -c $(CFILES) -I./
-	ar -rc $(OUT) $(OFILES)
-
-all:	$(NAME)
-
-clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
+$(OBJS): %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
-	rm -f $(NAME) $(OFILES)
+	rm -f $(NAME)
 
-re:	fclean all
+clean:
+	rm -f $(OBJS) $(BONUS_OBJS)
 
-.PHONY: all, clean, fclean, re
+re: fclean all
+
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $^
+
+$(BONUS_OBJS): %.o:%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: all, bonus, clean, fclean, re

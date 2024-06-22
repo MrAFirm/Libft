@@ -6,13 +6,13 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:41:14 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/18 13:06:38 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:24:08 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-extern size_t ft_strlcpy(char *dest, const char *src, size_t length)
+size_t ft_strlcpy(char *dest, const char *src, size_t length)
 {
 	size_t target_byte;
 

@@ -3,88 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <nacht29.study@gmail.com>           +#+  +:+       +#+        */
+/*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 13:11:19 by yachan            #+#    #+#             */
-/*   Updated: 2024/06/20 13:11:20 by yachan           ###   ########.fr       */
+/*   Created: 2024/06/22 15:29:08 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/06/22 15:29:33 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	alloc_len(char const *s, char c)
+int	count_strings(char const *s, char c)
 {
-	size_t	len;
-	int		flag;
+	int	i;
+	int	count;
+
+	count = 1;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			if (s[i + 1] != c)
+				count++;
+		}
+		i++;
+	}
+	if (s[0] == c)
+		count--;
+	if (s[i - 1] == c)
+		count--;
+	return (count);
+}
+
+int	ft_delimstrl(char const *s, char c)
+{
+	int	len;
 
 	len = 0;
-	flag = 1;
-	while (*s)
-	{
-		if (*s != c && flag == 1)
-		{
-			len++;
-			flag = 0;
-		}
-		else if (*s == c)
-			flag = 1;
-		s++;
-	}
+	while (s[len] != c && s[len] != '\0')
+		len++;
 	return (len);
 }
 
-static void	split(char const *s, char c, char ***str_arr, size_t itr)
+void	putstr(char *dest, char const *str, int len)
 {
-	size_t	start;
-	size_t	end;
-	size_t	arr_pos;
+	int		i;
 
-	start = 0;
-	arr_pos = 0;
-	while (itr > 0)
+	i = 0;
+	while (i < len)
 	{
-		end = 0;
-		while (s[start] == c)
-			start++;
-		while (s[start + end] != c && s[start + end] != '\0')
-			end++;
-		(*str_arr)[arr_pos] = ft_substr(s, (int)start, end);
-		start = start + end;
-		arr_pos++;
-		itr--;
+		dest[i] = str[i];
+		i++;
 	}
+	dest[i] = '\0';
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	len;
-	char	**str_arr;
+	char	**str;
+	size_t	i;
+	int		j;
+	int		count;
 
+	i = 0;
+	j = 0;
 	if (!s)
 		return (NULL);
-	len = alloc_len(s, c);
-	str_arr = malloc((len + 1) * sizeof(char *));
-	if (!str_arr)
+	count = count_strings(s, c);
+	str = malloc (sizeof(char *) * (count + 1));
+	if (!str)
 		return (NULL);
-	split(s, c, &str_arr, len);
-	str_arr[len] = NULL;
-	return (str_arr);
-}
-
-/*
-#include <stdio.h>
-int main(void)
-{
-	char const *s = "xxxaaxxxxbbbb";
-	char c = 'x';
-	char **str = ft_split(s, c);
-	printf("len: %lu\n", alloc_len(s, c));
-	int i = -1;
-	while (str[++i])
+	while (i < ft_strlen(s) && j < count)
 	{
-		printf("%s\n", str[i]);
+		while (s[i] == c)
+			i++;
+		str[j] = (char *)malloc(sizeof(char) * (ft_delimstrl(s + i, c) + 1));
+		if (!str[j])
+			return (NULL);
+		putstr(str[j++], s + i, ft_delimstrl(s + i, c));
+		i += ft_delimstrl(s + i, c);
 	}
-	printf("end: %s\n", str[i]);
-	return (0);
+	str[j] = NULL;
+	return (str);
 }
-*/
