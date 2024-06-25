@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:55:32 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/10 16:34:32 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:37:23 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t length)
 
 	index = 0;
 	if (dest == NULL && src == NULL)
-    	return NULL;
-
+		return (NULL);
 	while (index < length)
 	{
 		((char *)dest)[index] = ((const char *)src)[index];

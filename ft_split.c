@@ -6,13 +6,13 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:29:08 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/22 22:05:29 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:09:06 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_strings(char const *s, char c)
+int	count_substr(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -69,7 +69,7 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	if (!s)
 		return (NULL);
-	count = count_strings(s, c);
+	count = count_substr(s, c);
 	str = malloc (sizeof(char *) * (count + 1));
 	if (!str)
 		return (NULL);
@@ -77,7 +77,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		str[j] = (char *)malloc(sizeof(char) * (ft_delimstrl(s + i, c) + 1));
+		str[j] = malloc(sizeof(char) * (ft_delimstrl(s + i, c) + 1));
 		if (!str[j])
 			return (NULL);
 		putstr(str[j++], s + i, ft_delimstrl(s + i, c));

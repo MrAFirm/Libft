@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 11:33:59 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/08 15:51:21 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:23:32 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_isalnum(int i)
 {
 	if (i >= 'a' && i <= 'z')
 		return (1);
-	else if	(i >= 'A' && i <= 'Z')
+	else if (i >= 'A' && i <= 'Z')
 		return (1);
 	if (i >= '0' && i <= '9')
 		return (1);

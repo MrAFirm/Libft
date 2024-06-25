@@ -6,13 +6,13 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:09:24 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/22 16:41:12 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:39:46 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 

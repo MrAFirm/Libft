@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:43:11 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/20 15:33:50 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:41:37 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	while (s1[i])
 	{
 		concatenate[i] = s1[i];
-		i++;	
+		i++;
 	}
 	while (s2[j])
 	{

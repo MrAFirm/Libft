@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:55:20 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/22 21:59:21 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:25:23 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ft_char(char *s, unsigned int number, long int len)
 {
 	while (number > 0)
 	{
-		s[len--] = 48 + (number % 10);
+		s[len--] = '0' + (number % 10);
 		number = number / 10;
 	}
 	return (s);
